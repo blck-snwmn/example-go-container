@@ -7,8 +7,11 @@ import (
 )
 
 func main() {
-	// def http.handler
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/greet", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Hello!"))
+	})
+
+	http.HandleFunc("/uuid", func(w http.ResponseWriter, r *http.Request) {
 		// return uuid
 		ud, _ := uuid.NewV7()
 		w.Write([]byte(ud.String()))
