@@ -19,19 +19,12 @@ jobs:
                 path: go-build-cache
                 key: ${{ runner.os }}-go-build-cache-${{ hashFiles('**/go.sum') }}
 
-            - name: Go Build Cache for Docker
-              uses: actions/cache@v4
-              with:
-                path: go-mod-cache
-                key: ${{ runner.os }}-go-mod-cache-${{ hashFiles('**/go.sum') }}
-
             - name: inject go-build-cache into docker
               uses: reproducible-containers/buildkit-cache-dance@87e6a3bbd976a1476e29b60fe743ab0977034ff5
               with:
                 cache-map: |
                   {
-                    "go-build-cache": "/root/.cache/go-build",
-                    "go-mod-cache": "/go/pkg/mod"
+                    "go-build-cache": "/root/.cache/go-build"
                   }
                 # skip-extraction: ${{ steps.cache.outputs.cache-hit }}
 
