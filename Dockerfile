@@ -10,6 +10,7 @@ RUN --mount=type=cache,target=/go/pkg/mod go mod download
 RUN ls -al /go
 RUN ls -al /root
 RUN ls -al /root/.cache
+RUN ls -al /root/.cache/go-build
 
 RUN ls -al /go/pkg
 RUN ls -al /go/pkg/mod
