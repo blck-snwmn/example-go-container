@@ -7,6 +7,8 @@ RUN go env -w GOMODCACHE=/root/.cache/go-build
 COPY go.mod go.sum ./
 RUN --mount=type=cache,target=/go/pkg/mod go mod download
 
+RUN go env | grep CACHE
+
 RUN ls -al /go
 RUN ls -al /root
 RUN ls -al /root/.cache
