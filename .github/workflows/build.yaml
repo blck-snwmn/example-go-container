@@ -12,7 +12,6 @@ jobs:
 
             - name: Set up buildx
               uses: docker/setup-buildx-action@v3
-
             - name: Go Build Cache for Docker
               uses: actions/cache@v4
               id: cache
@@ -31,7 +30,8 @@ jobs:
               with:
                 cache-map: |
                   {
-                    "go-build-cache": "/root/.cache/go-build"
+                    "go-build-cache": "/root/.cache/go-build",
+                    "go-mod-cache": "/go/pkg/mod"
                   }
                 # skip-extraction: ${{ steps.cache.outputs.cache-hit }}
 

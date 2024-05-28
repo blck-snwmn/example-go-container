@@ -9,9 +9,6 @@ RUN --mount=type=cache,target="/root/.cache/go-build" go mod download
 
 RUN go env | grep CACHE
 
-RUN ls -al /go
-RUN ls -al /root
-RUN ls -al /root/.cache
 RUN ls -al /root/.cache/go-build
 
 COPY . .
