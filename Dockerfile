@@ -2,7 +2,7 @@ FROM golang:1.22.3-bullseye as build
 
 WORKDIR /app
 
-RUN go env -w GOMODCACHE=/root/.cache/go-build
+# RUN go env -w GOMODCACHE=/root/.cache/go-build
 
 COPY go.mod go.sum ./
 RUN --mount=type=cache,target=/go/pkg/mod go mod download
