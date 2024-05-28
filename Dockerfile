@@ -8,6 +8,7 @@ RUN --mount=type=cache,target=/go/pkg/mod/ go mod download
 COPY . .
 ENV GOCACHE=/root/.cache/go-build
 RUN --mount=type=cache,target="/root/.cache/go-build" \
+    --mount=type=cache,target=/go/pkg/mod/ \
     go build -trimpath -ldflags "-w -s" -o app
 
 FROM debian:bullseye-slim as deploy
