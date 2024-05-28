@@ -9,7 +9,6 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v4
-
             - name: Set up buildx
               uses: docker/setup-buildx-action@v3
             - name: Go Build Cache for Docker
@@ -18,11 +17,9 @@ jobs:
               with:
                 path: go-build-cache
                 key: ${{ runner.os }}-go-build-cache-${{ hashFiles('**/go.sum') }}
-
             - name: ls
               run: | 
                 ls -la go-build-cache
-
             - name: inject go-build-cache into docker
               uses: reproducible-containers/buildkit-cache-dance@87e6a3bbd976a1476e29b60fe743ab0977034ff5
               with:
@@ -31,7 +28,6 @@ jobs:
                     "go-build-cache": "/root/.cache/go-build"
                   }
                 # skip-extraction: ${{ steps.cache.outputs.cache-hit }}
-
             - name: Build
               uses: docker/build-push-action@v5
               with:
