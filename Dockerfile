@@ -4,9 +4,12 @@ WORKDIR /app
 
 RUN go env -w GOMODCACHE=/root/.cache/go-build
 RUN go env | grep GOMODCACHE
+RUN ls -al /root
 
 COPY go.mod go.sum ./
-RUN --mount=type=cache,target="/root/.cache/go-build" go mod download
+RUN go mod download
+
+RUN ls -al /root
 
 COPY . .
 RUN --mount=type=cache,target="/root/.cache/go-build" \
