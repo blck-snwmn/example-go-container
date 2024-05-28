@@ -3,12 +3,14 @@ package main
 import (
 	"net/http"
 
+	greet "github.com/blck-snwmn/example-go-container/geet"
 	"github.com/google/uuid"
 )
 
 func main() {
+	g := greet.Greeter{}
 	http.HandleFunc("/greet", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello!"))
+		w.Write([]byte(g.Greet()))
 	})
 
 	http.HandleFunc("/uuid", func(w http.ResponseWriter, r *http.Request) {
