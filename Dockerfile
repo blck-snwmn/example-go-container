@@ -9,7 +9,7 @@ RUN ls -al /root
 COPY go.mod go.sum ./
 RUN go mod download
 
-RUN ls -al /root
+RUN ls -al /root/.cache
 
 COPY . .
 RUN --mount=type=cache,target="/root/.cache/go-build" \
