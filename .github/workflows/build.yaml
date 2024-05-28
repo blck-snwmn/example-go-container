@@ -22,7 +22,7 @@ jobs:
               with:
                 cache-map: |
                   {
-                    "go-build-cache": ".cache/go-build"
+                    "go-build-cache": "/root/.cache/go-build"
                   }
             - name: Build
               uses: docker/build-push-action@v5
