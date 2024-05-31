@@ -18,6 +18,9 @@ func main() {
 		ud, _ := uuid.NewV7()
 		w.Write([]byte(ud.String()))
 	})
+	http.HandleFunc("hello", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("world"))
+	})
 	// listen and serve
 	http.ListenAndServe(":8080", nil)
 }
