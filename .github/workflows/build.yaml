@@ -31,7 +31,7 @@ jobs:
             - name: ls
               run: |
                 ls -la
-                ls -la /home/runner/.cache/go-build
+                ls -la /home/runner/
             - name: go env
               run: |
                 go env | grep CACHE
