@@ -27,7 +27,7 @@ jobs:
                   {
                     "go-build-cache": "/root/.cache/go-build"
                   }
-                skip-extraction: ${{ steps.cache.outputs.cache-hit }}
+                # skip-extraction: ${{ steps.cache.outputs.cache-hit }}
             - name: ls
               run: |
                 ls -la
